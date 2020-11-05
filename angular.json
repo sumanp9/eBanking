@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "eBanking"
+    }
+  },
+  "defaultProject": "eBanking",
+  "cli": {
+    "analytics": false
+  }
 }
