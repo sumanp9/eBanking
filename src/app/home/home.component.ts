@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 
 
 export interface Customer {
-  fName: string;
-  lName: string;
+  firstName: string;
+  lastName: string;
   email: string;
   userName: string;
   password: string;
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customer = {fName: '', lName: '', email: '', password: '', userName: ''}
+    this.customer = {firstName: '', lastName: '', email: '', password: '', userName: ''}
   }
 
 
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
   signIn(customer: Customer): void {
     // TODO: cannot be null (username and password)
-    this.service.loginUser(customer);
+    this.service.loginUser(customer).subscribe();
 
   }
 
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
     if (customer.password !== null && customer.password === rePassword) {
       this.service.registerUser(customer).subscribe((cust) => {
         if (cust != null) {
-          this.router.navigateByUrl('home');
+          this.router.navigateByUrl('account');
         }
       });
     }

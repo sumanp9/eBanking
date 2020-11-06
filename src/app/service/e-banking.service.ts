@@ -12,7 +12,7 @@ export class EBankingService {
   constructor(private http: HttpClient) { }
 
   registerUser(customer: Customer): Observable<Customer>{
-    return this.http.post<Customer>(this.url + 'registerUser', customer);
+    return this.http.post<Customer>(this.url + 'registerCustomer', customer);
   }
 
   loginUser(customer: Customer): Observable<Customer>{
