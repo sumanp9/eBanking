@@ -1,1 +1,64 @@
-<p>home works!</p>
+<div>
+  <mat-card>
+    <mat-card-header>Welcome to Banking Application!</mat-card-header>
+    <mat-card-actions>
+      <button mat-flat-button (click)="openDialog(signUpComponent, false)">Sign Up</button>
+      <button mat-flat-button (click)="openDialog(signInComponent, true)">Sign In</button>
+
+        <ng-template #signInComponent>
+          <h1> Sign In</h1>
+          <mat-form-field>
+            <mat-label>User Name:</mat-label>
+            <input matInput type="text" [(ngModel)]="userName">
+          </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password:</mat-label>
+            <input matInput type="password" [(ngModel)]="password">
+        </mat-form-field>
+          <p></p>
+            <button mat-flat-button color="primary" (click)="signIn(customer)">Sign In</button> &nbsp;
+            <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+        </ng-template>
+
+        <!-- Sign Up component -> Activates after pressing signUp button-->
+      <ng-template #signUpComponent>
+        <h2>Register</h2>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput [(ngModel)]="customer.fName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="customer.lName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="customer.email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>User Name</mat-label>
+          <input matInput [(ngModel)]="customer.userName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="customer.password">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Re-Type Password</mat-label>
+          <input matInput type="password" [(ngModel)]="rePassword">
+        </mat-form-field>
+
+        <p></p>
+
+        <button mat-raised-button color="primary" (click)="register(customer, rePassword)">Register</button> &nbsp;
+        <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+      </ng-template>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
