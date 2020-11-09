@@ -9,11 +9,11 @@
           <h1> Sign In</h1>
           <mat-form-field>
             <mat-label>User Name:</mat-label>
-            <input matInput type="text" [(ngModel)]="userName">
+            <input matInput type="text" [(ngModel)]="customer.userName">
           </mat-form-field>
         <mat-form-field>
             <mat-label>Password:</mat-label>
-            <input matInput type="password" [(ngModel)]="password">
+            <input matInput type="password" [(ngModel)]="customer.password">
         </mat-form-field>
           <p></p>
             <button mat-flat-button color="primary" (click)="signIn(customer)">Sign In</button> &nbsp;
@@ -55,8 +55,16 @@
 
         <p></p>
 
-        <button mat-raised-button color="primary" (click)="register(customer, rePassword)">Register</button> &nbsp;
+        <button mat-raised-button color="primary" (click)="register(customer, rePassword, accountSignUp)">Register</button> &nbsp;
         <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+
+        <p></p>
+      </ng-template>
+
+      <ng-template #accountSignUp>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>Open Bank Account</mat-expansion-panel-header>
+        </mat-expansion-panel>
       </ng-template>
 
     </mat-card-actions>

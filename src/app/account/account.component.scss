@@ -1,0 +1,21 @@
+.profile_toolbar{
+  position: absolute;
+  right: 50px;
+
+}
+
+.banking_options {
+  position: absolute;
+  left: 50px;
+  width: 200px;
+}
+.options{
+  transition: 0.3s;
+  padding: 0 0 10px 0 ;
+}
+
+.options:hover {
+  opacity: 1;
+  left: 5px;
+  cursor: pointer;
+}

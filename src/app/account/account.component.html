@@ -1,1 +1,22 @@
-<p>account works!</p>
+<mat-toolbar>eBanking
+  <div class="profile_toolbar">
+    <mat-label>
+      {{this.customer.firstName}} {{this.customer.lastName}}
+    </mat-label>
+    <button mat-icon-button (click)="logout()"><mat-icon>power_settings_new</mat-icon></button>
+  </div>
+</mat-toolbar>
+<h1>toolbar</h1>
+
+<div>
+  <mat-card class="banking_options">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option>Account Details</mat-list-option>
+      <mat-list-option>Deposit</mat-list-option>
+      <mat-list-option>Withdraw</mat-list-option>
+      <mat-list-option>Transfer Money</mat-list-option>
+      <mat-list-option>Transaction History</mat-list-option>
+    </mat-selection-list>
+  </mat-card>
+</div>
+

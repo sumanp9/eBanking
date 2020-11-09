@@ -16,6 +16,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
 import { AccountComponent } from './account/account.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {CommonModule} from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +41,11 @@ import { AccountComponent } from './account/account.component';
     MatToolbarModule,
     MatInputModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatExpansionModule,
+    MatSidenavModule,
+    MatListModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

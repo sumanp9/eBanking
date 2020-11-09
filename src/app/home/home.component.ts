@@ -2,6 +2,7 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {EBankingService} from '../service/e-banking.service';
 import {Router} from '@angular/router';
+import {InternalService} from '../service/internal.service';
 
 
 export interface Customer {
@@ -19,13 +20,11 @@ export interface Customer {
 export class HomeComponent implements OnInit {
 
   customer: Customer;
-  password: string;
-  userName: string;
-  lName: any;
   rePassword: string;
 
   constructor(private dialog: MatDialog,
               private service: EBankingService,
+              private internalService: InternalService,
               private router: Router) {
   }
 
@@ -41,19 +40,32 @@ export class HomeComponent implements OnInit {
 
   signIn(customer: Customer): void {
     // TODO: cannot be null (username and password)
-    this.service.loginUser(customer).subscribe();
+    this.service.loginUser(customer).subscribe((cust) => {
+      if (cust) {
+        this.internalService.serviceData = cust;
+        this.dialog.closeAll();
+        this.router.navigateByUrl('/account');
+      }
+      //else statement to display error UI
+    });
 
   }
 
-  register(customer: Customer, rePassword: string): void{
+  register(customer: Customer, rePassword: string, accountSignUp: TemplateRef<any>): void{
     console.log(customer);
     console.log(rePassword);
     if (customer.password !== null && customer.password === rePassword) {
       this.service.registerUser(customer).subscribe((cust) => {
         if (cust != null) {
-          this.router.navigateByUrl('account');
+          this.internalService.serviceData = cust;
+          this.router.navigateByUrl('/account');
+          this.registerBankAccount(accountSignUp, cust.firstName);
         }
       });
     }
+  }
+
+  registerBankAccount(acctRegister: TemplateRef<any>, firstName: string ): void{
+    this.dialog.open(acctRegister, {width: '300px'});
   }
 }
