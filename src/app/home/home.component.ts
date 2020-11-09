@@ -68,4 +68,5 @@ export class HomeComponent implements OnInit {
   registerBankAccount(acctRegister: TemplateRef<any>, firstName: string ): void{
     this.dialog.open(acctRegister, {width: '300px'});
   }
+
 }

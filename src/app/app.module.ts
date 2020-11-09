@@ -20,6 +20,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {CommonModule} from '@angular/common';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {CommonModule} from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -45,7 +47,7 @@ import {CommonModule} from '@angular/common';
     MatExpansionModule,
     MatSidenavModule,
     MatListModule,
-    CommonModule
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

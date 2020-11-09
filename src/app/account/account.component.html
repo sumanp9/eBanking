@@ -1,12 +1,26 @@
 <mat-toolbar>eBanking
-  <div class="profile_toolbar">
+
+  <div class="account-header">
+    <mat-label >{{this.accountDetails}}</mat-label>
+  </div>
+  <div class="profile_toolbar" *ngIf="customer">
     <mat-label>
       {{this.customer.firstName}} {{this.customer.lastName}}
     </mat-label>
     <button mat-icon-button (click)="logout()"><mat-icon>power_settings_new</mat-icon></button>
   </div>
 </mat-toolbar>
-<h1>toolbar</h1>
+
+<p></p>
+
+
+<button mat-button [matMenuTriggerFor]="menu" class="account-menu">Choose Account</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="showChecking()">Checking</button>
+  <button mat-menu-item  (click)="showSavings()">Savings</button>
+</mat-menu>
+
+<p></p>
 
 <div>
   <mat-card class="banking_options">

@@ -18,6 +18,7 @@ export interface BankingOptions {
 export class AccountComponent implements OnInit {
 
   customer: Customer;
+  accountDetails: string = 'Checking';
 
   constructor(private dialog: MatDialog,
               private internalService: InternalService,
@@ -42,4 +43,11 @@ export class AccountComponent implements OnInit {
     alert('Hello');
   }
 
+  showChecking() {
+
+  }
+
+  showSavings() {
+
+  }
 }
