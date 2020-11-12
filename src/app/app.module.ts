@@ -21,6 +21,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {CommonModule} from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatExpansionModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
