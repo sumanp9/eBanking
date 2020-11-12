@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   customer: Customer;
   rePassword: string;
+  rememberUser = false;
 
   constructor(private dialog: MatDialog,
               private service: EBankingService,
@@ -39,15 +40,20 @@ export class HomeComponent implements OnInit {
   }
 
   signIn(customer: Customer): void {
+    console.log(this.rememberUser);
+
+    localStorage.setItem('User', customer.userName);
+    console.log(localStorage.getItem('User'));
     // TODO: cannot be null (username and password)
-    this.service.loginUser(customer).subscribe((cust) => {
+    /*this.service.loginUser(customer).subscribe((cust) => {
       if (cust) {
+
         this.internalService.serviceData = cust;
         this.dialog.closeAll();
         this.router.navigateByUrl('/account');
       }
       //else statement to display error UI
-    });
+    });*/
 
   }
 

@@ -22,6 +22,7 @@ import {MatListModule} from '@angular/material/list';
 import {CommonModule} from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -50,7 +51,8 @@ import {MatTableModule} from '@angular/material/table';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
