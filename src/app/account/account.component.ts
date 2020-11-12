@@ -5,9 +5,17 @@ import {Router} from '@angular/router';
 import {EBankingService} from '../service/e-banking.service';
 import {Customer} from '../home/home.component';
 
-export interface BankingOptions {
-  value: string;
-  viewValue: string;
+export interface AccountDetails {
+  savingsId: number;
+  checkingId: number;
+  savingsBalance: number;
+  checkingBalance: number;
+}
+
+interface  a {
+  id: number;
+  name: string;
+  balance: number;
 }
 
 @Component({
@@ -18,7 +26,10 @@ export interface BankingOptions {
 export class AccountComponent implements OnInit {
 
   customer: Customer;
-  accountDetails: string = 'Checking';
+  accountDetails = 'Checking';
+  customerAccountDetails: a[];
+  displayedColumns: string[] = ['id', 'accountType', 'balance', 'buttons'];
+
 
   constructor(private dialog: MatDialog,
               private internalService: InternalService,
@@ -33,21 +44,31 @@ export class AccountComponent implements OnInit {
     if (this.customer == null) {
       this.router.navigateByUrl('');
     }
+    this.refreshPage();
   }
 
   logout(): void {
     this.router.navigateByUrl('');
   }
 
-  acctDetails(): void {
-    alert('Hello');
-  }
-
-  showChecking() {
+  showChecking(): void{
 
   }
 
-  showSavings() {
+  showSavings(): void{
 
+  }
+
+  getAccountDetails(): void {
+    //TODO: what type of account is it? Checking or savings
+  }
+
+  //
+  private refreshPage(): void {
+    this.service.getAccountDetails(this.customer.userName).subscribe((details: AccountDetails) => {
+      console.log(details);
+      this.customerAccountDetails = [{id: details.savingsId, balance: details.savingsBalance, name: 'Savings'},
+        {id: details.checkingId, balance: details.checkingBalance, name: 'Checking'}];
+    });
   }
 }
