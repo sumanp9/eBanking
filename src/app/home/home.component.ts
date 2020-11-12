@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customer = {firstName: '', lastName: '', email: '', password: '', userName: ''}
+    this.customer = {firstName: '', lastName: '', email: '', password: '', userName: ''};
   }
 
 
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  register(customer: Customer, rePassword: string, accountSignUp: TemplateRef<any>): void{
+  register(customer: Customer, rePassword: string): void{
     console.log(customer);
     console.log(rePassword);
     if (customer.password !== null && customer.password === rePassword) {
@@ -59,14 +59,10 @@ export class HomeComponent implements OnInit {
         if (cust != null) {
           this.internalService.serviceData = cust;
           this.router.navigateByUrl('/account');
-          this.registerBankAccount(accountSignUp, cust.firstName);
         }
       });
     }
   }
 
-  registerBankAccount(acctRegister: TemplateRef<any>, firstName: string ): void{
-    this.dialog.open(acctRegister, {width: '300px'});
-  }
 
 }
