@@ -12,11 +12,6 @@ export interface AccountDetails {
   checkingBalance: number;
 }
 
-interface  a {
-  id: number;
-  name: string;
-  balance: number;
-}
 
 @Component({
   selector: 'app-account',
@@ -26,9 +21,9 @@ interface  a {
 export class AccountComponent implements OnInit {
 
   customer: Customer;
-  accountDetails = 'Checking';
-  customerAccountDetails: a[];
-  displayedColumns: string[] = ['id', 'accountType', 'balance', 'buttons'];
+  changeText: boolean;
+  checkingText: boolean;
+  customerAccountDetails: AccountDetails;
 
 
   constructor(private dialog: MatDialog,
@@ -39,36 +34,23 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.customer);
-    // navigate to homepage if customer is null.
-    if (this.customer == null) {
-      this.router.navigateByUrl('');
-    }
     this.refreshPage();
   }
 
-  logout(): void {
-    this.router.navigateByUrl('');
-  }
 
-  showChecking(): void{
 
-  }
-
-  showSavings(): void{
-
-  }
-
-  getAccountDetails(): void {
-    //TODO: what type of account is it? Checking or savings
-  }
-
-  //
   private refreshPage(): void {
     this.service.getAccountDetails(this.customer.userName).subscribe((details: AccountDetails) => {
       console.log(details);
-      this.customerAccountDetails = [{id: details.savingsId, balance: details.savingsBalance, name: 'Savings'},
-        {id: details.checkingId, balance: details.checkingBalance, name: 'Checking'}];
+      this.customerAccountDetails = details;
     });
+  }
+
+  getChecking(): void {
+
+  }
+
+  getSavings(): void {
+    this.router.navigateByUrl('/savings');
   }
 }

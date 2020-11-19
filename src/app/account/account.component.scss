@@ -1,9 +1,3 @@
-.profile_toolbar{
-  position: absolute;
-  right: 50px;
-
-}
-
 .account-header{
   position: absolute;
   left: 45%;
@@ -43,4 +37,19 @@
 
 table {
   width: 100%;
+}
+
+.account-button{
+  width: 15%;
+  height: 220px;
+}
+
+.account-button:hover{
+  background-color: black;
+  color: white;
+  transition: 0.7s;
+}
+
+.btn-div{
+  position: center;
 }
