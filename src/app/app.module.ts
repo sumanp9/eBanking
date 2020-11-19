@@ -22,6 +22,9 @@ import {MatListModule} from '@angular/material/list';
 import {CommonModule} from '@angular/common';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SavingsAccountComponent } from './savings-account/savings-account.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -29,29 +32,32 @@ import {MatTableModule} from '@angular/material/table';
   declarations: [
     AppComponent,
     HomeComponent,
-    AccountComponent
+    AccountComponent,
+    ToolbarComponent,
+    SavingsAccountComponent
   ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatDividerModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatDialogModule,
-    FormsModule,
-    MatExpansionModule,
-    MatSidenavModule,
-    MatListModule,
-    MatMenuModule,
-    MatTableModule
-  ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatDividerModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatDialogModule,
+        FormsModule,
+        MatExpansionModule,
+        MatSidenavModule,
+        MatListModule,
+        MatMenuModule,
+        MatTableModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
