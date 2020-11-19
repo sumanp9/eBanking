@@ -1,0 +1,76 @@
+<app-toolbar></app-toolbar>
+<p></p>
+<div class="flexbox" *ngIf="savingsAccount">
+
+<div class="flexOptions">
+  <mat-card>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option (click)="getAccountDetails(acctDetails)">Account Details</mat-list-option>
+      <mat-list-option (click)="openDialog(deposit)">Deposit</mat-list-option>
+      <mat-list-option (click)="openDialog(withdraw)">Withdraw</mat-list-option>
+      <mat-list-option>Transfer Money</mat-list-option>
+      <mat-list-option>Transaction History</mat-list-option>
+    </mat-selection-list>
+  </mat-card>
+</div>
+
+<div class="flex-buttons">
+  <mat-card>
+    <mat-card-header><em> <b> Savings </b></em>Account Details</mat-card-header>
+    <mat-card-content>
+      <mat-label>Your current balance is: ${{this.savingsAccount.balance}}</mat-label>
+    </mat-card-content>
+    <mat-dialog-actions>
+      <button mat-flat-button class="option-button" (click)="getAccountDetails(acctDetails)">Details</button>
+      <button mat-flat-button class="option-button" (click)="openDialog(deposit)">Deposit</button>
+      <button mat-flat-button class="option-button" (click)="openDialog(withdraw)">Withdraw</button>
+      <button mat-flat-button class="option-button">Transfer Cash</button>
+      <button mat-flat-button class="option-button">Transaction History</button>
+      <button mat-flat-button class="option-button">My Information</button>
+    </mat-dialog-actions>
+  </mat-card>
+
+</div>
+
+  <div class="flex-content">
+    <ng-template #acctDetails>
+      <mat-card>
+        <mat-card-header>
+          Savings Account
+          <mat-card-content>
+            <mat-label>Your current balance is: ${{this.savingsAccount.balance}}</mat-label>
+          </mat-card-content>
+        </mat-card-header>
+      </mat-card>
+    </ng-template>
+
+
+    <ng-template #deposit>
+      <mat-form-field>
+        <mat-label>Deposit Amount</mat-label>
+        <span matPrefix>$ &nbsp;</span>
+        <input matInput type="number" autocomplete="false" min="0" max="10000" [(ngModel)]="depositAmount">
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-flat-button (click)="depositSavings()">Deposit</button>
+        <button mat-flat-button matDialogClose>Cancel</button>
+      </mat-card-actions>
+    </ng-template>
+
+    <ng-template #withdraw>
+      <mat-form-field>
+        <mat-label>Withdraw Amount</mat-label>
+        <span matPrefix>$ &nbsp;</span>
+        <label> Limit is 500, and remaning amount is {{this.savingsAccount.balance}}</label>
+        <input matInput type="number" autocomplete="false" max="{{this.savingsAccount.balance}}" min="0" [(ngModel)]="depositAmount">
+        <mat-error *ngIf="depositAmount > savingsAccount.balance">Withdraw amount exceeds savings balance. Please try a smaller amount.</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-flat-button (click)="withdrawSavings()">Withdraw</button>
+        <button mat-flat-button matDialogClose>Cancel</button>
+      </mat-card-actions>
+    </ng-template>
+  </div>
+</div>
