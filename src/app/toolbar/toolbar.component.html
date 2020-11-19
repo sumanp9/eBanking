@@ -1,0 +1,10 @@
+<mat-toolbar>eBanking
+  <div class="profile_toolbar" *ngIf="customer">
+    <mat-label>
+      {{this.customer.firstName}} {{this.customer.lastName}}
+    </mat-label>
+    <button mat-icon-button (click)="logout()"><mat-icon>power_settings_new</mat-icon></button>
+    <button mat-button (click)="this.refreshPage()">REFRESH </button>
+
+  </div>
+</mat-toolbar>
