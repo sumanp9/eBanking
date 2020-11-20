@@ -3,6 +3,7 @@ import {EBankingService, Savings} from '../service/e-banking.service';
 import {Router} from '@angular/router';
 import {InternalService} from '../service/internal.service';
 import {MatDialog} from '@angular/material/dialog';
+import {TransferComponent} from '../transfer/transfer.component';
 
 @Component({
   selector: 'app-savings-account',
@@ -22,9 +23,10 @@ export class SavingsAccountComponent implements OnInit {
               private dialog: MatDialog) {
     this.userName =  internalService.serviceData.userName;
   }
-
+  
   ngOnInit(): void {
-    if (this.userName == null || this.userName === '') {
+
+    if (this.internalService.serviceData === null) {
       this.router.navigateByUrl('');
     } else {
       this.refreshPage();
@@ -60,6 +62,14 @@ export class SavingsAccountComponent implements OnInit {
       if (result) {
         this.dialog.closeAll();
         this.refreshPage();
+      }
+    });
+  }
+
+  open(): void{
+    this.dialog.open(TransferComponent, {data: this.savingsAccount.balance}).afterClosed().subscribe((result) => {
+      if (result){
+          this.refreshPage();
       }
     });
   }

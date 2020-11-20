@@ -24,7 +24,7 @@
       <button mat-flat-button class="option-button" (click)="getAccountDetails(acctDetails)">Details</button>
       <button mat-flat-button class="option-button" (click)="openDialog(deposit)">Deposit</button>
       <button mat-flat-button class="option-button" (click)="openDialog(withdraw)">Withdraw</button>
-      <button mat-flat-button class="option-button">Transfer Cash</button>
+      <button mat-flat-button class="option-button" (click)="open()">Transfer Money</button>
       <button mat-flat-button class="option-button">Transaction History</button>
       <button mat-flat-button class="option-button">My Information</button>
     </mat-dialog-actions>
@@ -71,6 +71,11 @@
         <button mat-flat-button (click)="withdrawSavings()">Withdraw</button>
         <button mat-flat-button matDialogClose>Cancel</button>
       </mat-card-actions>
+    </ng-template>
+
+
+    <ng-template>
+      <transfer
     </ng-template>
   </div>
 </div>
