@@ -11,6 +11,8 @@ export interface Customer {
   email: string;
   userName: string;
   password: string;
+  address: string;
+  phoneNumber: string;
 }
 @Component({
   selector: 'app-home',
@@ -29,7 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customer = {firstName: '', lastName: '', email: '', password: '', userName: ''};
+    this.customer = {firstName: '', lastName: '', email: '', password: '', userName: '', address: '', phoneNumber: ''};
   }
 
 

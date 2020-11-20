@@ -53,6 +53,17 @@
           <input matInput type="password" [(ngModel)]="rePassword">
         </mat-form-field>
 
+        <mat-form-field>
+          <mat-label>Street Address</mat-label>
+          <input matInput [(ngModel)]="customer.address">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+1 &nbsp;</span>
+          <input matInput type="tel" placeholder="555-555-1234" [(ngModel)]="customer.phoneNumber">
+        </mat-form-field>
+
         <p></p>
 
         <button mat-raised-button color="primary" (click)="register(customer, rePassword)">Register</button> &nbsp;
