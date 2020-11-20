@@ -25,6 +25,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SavingsAccountComponent } from './savings-account/savings-account.component';
 import {MatSelectModule} from '@angular/material/select';
+import {TransferComponent} from './transfer/transfer.component';
 
 
 
@@ -34,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
     HomeComponent,
     AccountComponent,
     ToolbarComponent,
-    SavingsAccountComponent
+    SavingsAccountComponent,
+    TransferComponent
   ],
     imports: [
         BrowserModule,
