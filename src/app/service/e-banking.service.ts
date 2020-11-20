@@ -9,6 +9,10 @@ export interface Savings{
   balance: number;
 }
 
+export interface TransferAmount{
+  accountNumber: number;
+  amount: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -39,5 +43,11 @@ export class EBankingService {
 
   withdraw(amount: number, savingsAccountId: number): Observable<boolean>{
     return this.http.post<boolean>(this.url + 'withdrawSavings/' + amount, savingsAccountId);
+  }
+
+  transferMoney(selected: string, amount: number, userName: string): Observable<any> {
+    if (selected === 'Checking Account') {
+      return this.http.post<any>(this.url + 'transferTo/checking/' + amount, userName);
+    }
   }
 }
