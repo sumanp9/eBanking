@@ -34,7 +34,11 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refreshPage();
+    if (this.customer === null ){
+      this.router.navigateByUrl('');
+    } else {
+      this.refreshPage();
+    }
   }
 
 
