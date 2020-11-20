@@ -1,0 +1,27 @@
+<mat-card-header><b>Transfer Money:</b></mat-card-header>
+<mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option (click)="otherAccount()" value="Checking Account">Checking Account</mat-option>
+    <mat-option (click)="otherEbankingAcct()" value="Another Ebanking Account">Another Ebanking Account</mat-option>
+  </mat-select>
+</mat-form-field>
+<p></p>
+
+<mat-form-field class="other-account" *ngIf="anotherAccountSelect">
+  <mat-label>Please enter account number:</mat-label>
+  <input matInput [(ngModel)]="otherAcctNumber">
+</mat-form-field>
+<p></p>
+
+<p></p>
+
+<p></p>
+<mat-form-field>
+  <mat-label>Amount:</mat-label>
+  <input matInput [(ngModel)]="amount">
+</mat-form-field>
+
+<mat-card-actions>
+  <button mat-button (click)="transferAmount()">Transfer</button>
+  <button mat-button matDialogClose>Close</button>
+</mat-card-actions>
