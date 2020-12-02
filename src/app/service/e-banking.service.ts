@@ -50,4 +50,8 @@ export class EBankingService {
       return this.http.post<any>(this.url + 'transferTo/checking/' + amount, userName);
     }
   }
+
+  getUserDetails(userName: string): Observable<Customer> {
+    return this.http.post<Customer>(this.url + 'getCustomerInfo', userName);
+  }
 }
