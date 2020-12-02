@@ -23,6 +23,7 @@
         <!-- Sign Up component -> Activates after pressing signUp button-->
       <ng-template #signUpComponent>
         <h2>Register</h2>
+        <mat-error *ngIf="errorMessage">{{errorMessage}}</mat-error>
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput [(ngModel)]="customer.firstName">

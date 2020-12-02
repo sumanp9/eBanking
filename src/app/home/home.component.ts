@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   customer: Customer;
   rePassword: string;
+  errorMessage: string;
 
   constructor(private dialog: MatDialog,
               private service: EBankingService,
@@ -62,6 +63,9 @@ export class HomeComponent implements OnInit {
           this.internalService.serviceData = cust;
           this.router.navigateByUrl('/account');
         }
+      }, error => {
+        console.log(error);
+        this.errorMessage = 'Unable to register the customer. Please try again';
       });
     }
   }
