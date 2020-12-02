@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {InternalService} from '../service/internal.service';
 import {MatDialog} from '@angular/material/dialog';
 import {TransferComponent} from '../transfer/transfer.component';
+import {CustomerInfoComponent} from '../customer-info/customer-info.component';
 
 @Component({
   selector: 'app-savings-account',
@@ -21,9 +22,9 @@ export class SavingsAccountComponent implements OnInit {
               private router: Router,
               private internalService: InternalService,
               private dialog: MatDialog) {
-    this.userName =  internalService.serviceData.userName;
+    this.userName =  this.internalService.serviceData.userName;
   }
-  
+
   ngOnInit(): void {
 
     if (this.internalService.serviceData === null) {
@@ -72,5 +73,9 @@ export class SavingsAccountComponent implements OnInit {
           this.refreshPage();
       }
     });
+  }
+
+  customerInformation(): void {
+    this.dialog.open(CustomerInfoComponent, {data: this.userName});
   }
 }
