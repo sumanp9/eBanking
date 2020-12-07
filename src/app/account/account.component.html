@@ -2,7 +2,7 @@
 
 <mat-error>Please select a account!</mat-error>
 <p></p>
-<div class="button-div" *ngIf="customerAccountDetails">
+<div class="button-div" *ngIf="this.customer">
 <mat-dialog-actions>
   <button mat-raised-button class="account-button" (mouseover)="changeText=true" (mouseout)="changeText = false" (click)="getSavings()">
   <span *ngIf="!changeText">Savings</span>
