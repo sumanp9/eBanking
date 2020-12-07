@@ -34,10 +34,11 @@ export class AccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.customer === null ){
+    if (this.customer === null || this.customer === undefined ){
       this.router.navigateByUrl('');
     } else {
       this.refreshPage();
+
     }
   }
 
@@ -45,7 +46,6 @@ export class AccountComponent implements OnInit {
 
   private refreshPage(): void {
     this.service.getAccountDetails(this.customer.userName).subscribe((details: AccountDetails) => {
-      console.log(details);
       this.customerAccountDetails = details;
     });
   }

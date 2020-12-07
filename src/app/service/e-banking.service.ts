@@ -48,9 +48,14 @@ export class EBankingService {
   transferMoney(selected: string, amount: number, userName: string): Observable<any> {
     if (selected === 'Checking Account') {
       return this.http.post<any>(this.url + 'transferTo/checking/' + amount, userName);
+    } else{
+      // Why is if else necessary
     }
   }
+  transferMoneytoAnotherAccount(selected: string, amount: number, otherAcctNumber: number, senderUserName: string): Observable<any> {
+    return this.http.post<any>(this.url + 'transferTo/anotherAccount/' + amount, {senderUserName, otherAcctNumber});
 
+  }
   getUserDetails(userName: string): Observable<Customer> {
     return this.http.post<Customer>(this.url + 'getCustomerInfo', userName);
   }

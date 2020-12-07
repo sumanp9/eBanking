@@ -24,7 +24,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.customer == null) {
+    if (this.customer === null || this.customer === undefined ){
       this.router.navigateByUrl('');
     }
     this.refreshPage();
@@ -41,5 +41,9 @@ export class ToolbarComponent implements OnInit {
         this.customerAccountDetails = details;
       });
     }
+
+  navigateToHome(): void {
+    this.router.navigateByUrl('account');
   }
+}
 
