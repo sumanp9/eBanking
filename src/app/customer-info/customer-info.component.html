@@ -4,29 +4,31 @@
 
 <mat-divider></mat-divider>
 
-<mat-form-field>
-  <span>Name: </span>
-  {{customer.firstName}}  {{customer.lastName}}
-</mat-form-field>
+<div *ngIf="this.customer">
+  <mat-form-field>
+    <span>Name: </span>
+    {{customer.firstName}}  {{customer.lastName}}
+  </mat-form-field>
 
-<p></p>
+  <p></p>
 
-<mat-form-field>
-  <span>Email: </span>
-  {{customer.email}}
-</mat-form-field>
+  <mat-form-field>
+    <span>Email: </span>
+    {{customer.email}}
+  </mat-form-field>
 
-<p></p>
+  <p></p>
 
-<mat-form-field>
-  <span>Phone: </span>
-  {{customer.phoneNumber}}
-</mat-form-field>
+  <mat-form-field>
+    <span>Phone: </span>
+    {{customer.phoneNumber}}
+  </mat-form-field>
 
-<p></p>
+  <p></p>
 
-<mat-form-field>
-  <span>Address: </span>
-  {{customer.address}}
-</mat-form-field>
+  <mat-form-field>
+    <span>Address: </span>
+    {{customer.address}}
+  </mat-form-field>
 
+</div>
