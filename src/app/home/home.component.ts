@@ -6,6 +6,7 @@ import {InternalService} from '../service/internal.service';
 
 
 export interface Customer {
+  id: number;
   firstName: string;
   lastName: string;
   email: string;
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customer = {firstName: '', lastName: '', email: '', password: '', userName: '', address: '', phoneNumber: ''};
+    this.customer = {id: null, firstName: '', lastName: '', email: '', password: '', userName: '', address: '', phoneNumber: ''};
   }
 
 
