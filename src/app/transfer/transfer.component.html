@@ -1,7 +1,10 @@
 <mat-card-header><b>Transfer Money:</b></mat-card-header>
+
+<div *ngIf="selected!=''">
 <mat-form-field>
-  <mat-select [(value)]="selected">
-    <mat-option (click)="otherAccount()" value="Checking Account">Checking Account</mat-option>
+  <mat-select [(value)]="this.selected">
+    <mat-option *ngIf="this.selected === 'Checking Account'" (click)="otherAccount()" value="Checking Account">Checking Account</mat-option>
+    <mat-option *ngIf="this.selected === 'Savings Account'" (click)="otherAccount()" value="Savings Account">Savings Account</mat-option>
     <mat-option (click)="otherEbankingAcct()" value="Another Ebanking Account">Another Ebanking Account</mat-option>
   </mat-select>
 </mat-form-field>
@@ -25,3 +28,5 @@
   <button mat-button (click)="transferAmount()">Transfer</button>
   <button mat-button matDialogClose>Close</button>
 </mat-card-actions>
+</div>
+

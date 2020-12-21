@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {EBankingService, Savings, TransferAmount} from '../service/e-banking.service';
+import {EBankingService, ToAccount, TransferAmount, TransferDetails} from '../service/e-banking.service';
 import {InternalService} from '../service/internal.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-transfer',
@@ -13,19 +13,24 @@ export class TransferComponent implements OnInit {
   anotherAccountSelect: boolean;
   otherAcctNumber: number;
   amount: number;
-  selected = 'Checking Account';
+  selected: string;
   userName: string;
-  accountBalance: number;
+  toAccount: ToAccount;
 
-  constructor(@Inject(MAT_DIALOG_DATA) balance: number,
+  transferDetails: TransferDetails;
+
+  constructor(@Inject(MAT_DIALOG_DATA) toAccount: ToAccount,
               private internalService: InternalService,
               private service: EBankingService,
               private dialogRef: MatDialogRef<TransferComponent>) {
     this.userName =  internalService.serviceData.userName;
-    this.accountBalance = balance;
+    this.toAccount = toAccount;
+    this.selected = '';
+
   }
 
   ngOnInit(): void {
+    this.toAccount.accountType === 1 ? this.selected = 'Savings Account' : this.selected = 'Checking Account';
   }
 
 
@@ -38,19 +43,20 @@ export class TransferComponent implements OnInit {
   }
 
   transferAmount(): void {
-    console.log(this.amount);
-    console.log(this.accountBalance);
-    console.log(this.selected);
-    if (this.amount > 0 && this.amount <= this.accountBalance) {
-      if (this.selected === 'Another Ebanking Account') {
+    if (this.amount > 0 && this.amount <= this.toAccount.balance) {
+      this.transferDetails = {accountType: this.selected, amount: this.amount, otherAccountNum: this.otherAcctNumber};
+      this.dialogRef.close(this.transferDetails);
+     /* if (this.selected === 'Another Ebanking Account') {
+        this.service.transferMoneytoAnotherAccount(this.selected, this.amount, this.otherAcctNumber, this.userName).subscribe((result) => {
+          this.dialogRef.close();
+        });
       }
       else{
         console.log('Here');
         this.service.transferMoney(this.selected, this.amount, this.userName).subscribe((result) => {
-
           this.dialogRef.close();
         });
-      }
+      }*/
     }
   }
 }
