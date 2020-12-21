@@ -51,7 +51,7 @@ export class AccountComponent implements OnInit {
   }
 
   getChecking(): void {
-
+    this.router.navigateByUrl('/checking');
   }
 
   getSavings(): void {
