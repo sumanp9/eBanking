@@ -14,7 +14,7 @@
   </mat-card>
 </div>
 
-<div class="flex-buttons">
+<div class="flex-buttons" *ngIf="this.savingsAccount">
   <mat-card>
     <mat-card-header><em> <b> Savings </b></em>Account Details</mat-card-header>
     <mat-card-content>
@@ -24,7 +24,7 @@
       <button mat-flat-button class="option-button" (click)="getAccountDetails(acctDetails)">Details</button>
       <button mat-flat-button class="option-button" (click)="openDialog(deposit)">Deposit</button>
       <button mat-flat-button class="option-button" (click)="openDialog(withdraw)">Withdraw</button>
-      <button mat-flat-button class="option-button" (click)="open()">Transfer Money</button>
+      <button mat-flat-button class="option-button" (click)="transfer()">Transfer Money</button>
       <button mat-flat-button class="option-button">Transaction History</button>
       <button mat-flat-button class="option-button" (click)="customerInformation()">My Information</button>
     </mat-dialog-actions>

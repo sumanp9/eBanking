@@ -1,0 +1,26 @@
+.flexbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.flexOptions{
+  width:15%;
+  padding: 0 20% 0 0;
+}
+
+.flex-buttons{
+  flex-grow: 3;
+  align-self: flex-end;
+}
+
+.option-button{
+  width: 15%;
+  height: 220px;
+}
+
+.option-button:hover{
+  padding-bottom: 20px;
+  transition: 0.7s;
+  background-color: antiquewhite;
+}

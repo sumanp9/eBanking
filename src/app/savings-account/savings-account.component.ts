@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {EBankingService, Savings} from '../service/e-banking.service';
+import {AccountType, EBankingService, Savings, ToAccount, TransferDetails} from '../service/e-banking.service';
 import {Router} from '@angular/router';
 import {InternalService} from '../service/internal.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -17,6 +17,8 @@ export class SavingsAccountComponent implements OnInit {
   savingsAccount: Savings;
   depositAmount: number;
   amounts: number[] = [10, 50, 100, 500];
+  toAccount: ToAccount;
+  acctType: AccountType.Savings;
 
   constructor(private service: EBankingService,
               private router: Router,
@@ -67,12 +69,23 @@ export class SavingsAccountComponent implements OnInit {
     });
   }
 
-  open(): void{
-    this.dialog.open(TransferComponent, {data: this.savingsAccount.balance}).afterClosed().subscribe((result) => {
-      if (result){
-          this.refreshPage();
+  transfer(): void{
+    this.toAccount = {balance: this.savingsAccount.balance, accountType: AccountType.Savings};
+    this.dialog.open(TransferComponent, {data: this.toAccount}).afterClosed().subscribe((result: TransferDetails) => {
+      if (result) {
+        if (result.otherAccountNum != null) {
+          this.service.transferMoneytoAnotherAccount(result.accountType, result.amount, result.otherAccountNum, this.userName)
+            .subscribe(() => {
+              this.refreshPage();
+            });
+        } else {
+          console.log('Here');
+          this.service.transferMoney(result.accountType, result.amount, this.userName).subscribe(() => {
+            this.refreshPage();
+          });
+        }
       }
-    });
+      });
   }
 
   customerInformation(): void {
