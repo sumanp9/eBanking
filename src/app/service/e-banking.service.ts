@@ -9,10 +9,32 @@ export interface Savings{
   balance: number;
 }
 
+export interface Checking{
+  id: number;
+  balance: number;
+}
+
 export interface TransferAmount{
   accountNumber: number;
   amount: number;
 }
+
+export interface ToAccount {
+  balance: number;
+  accountType: AccountType;
+}
+export interface TransferDetails{
+  accountType: string;
+  amount: number;
+  otherAccountNum: number;
+}
+
+export enum AccountType{
+  Savings,
+  Checking
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +58,9 @@ export class EBankingService {
   getSavingsInfo(userName: string): Observable<Savings> {
     return this.http.post<Savings>(this.url + 'getSavings', userName);
   }
+  getCheckingInfo(customerId: number): Observable<Checking>  {
+      return this.http.post<Checking>(this.url + 'getChecking', customerId);
+  }
 
   deposit(depositAmount: number, savingsAccountId: number): Observable<boolean> {
     return this.http.post<boolean>(this.url + 'depositSavings/' + depositAmount, savingsAccountId);
@@ -49,6 +74,7 @@ export class EBankingService {
     if (selected === 'Checking Account') {
       return this.http.post<any>(this.url + 'transferTo/checking/' + amount, userName);
     } else{
+       return this.http.post<any>(this.url + 'transferTo/savings/' + amount, userName);
       // Why is if else necessary
     }
   }
@@ -59,4 +85,6 @@ export class EBankingService {
   getUserDetails(userName: string): Observable<Customer> {
     return this.http.post<Customer>(this.url + 'getCustomerInfo', userName);
   }
+
+
 }
