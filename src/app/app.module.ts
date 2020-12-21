@@ -27,6 +27,7 @@ import { SavingsAccountComponent } from './savings-account/savings-account.compo
 import {MatSelectModule} from '@angular/material/select';
 import {TransferComponent} from './transfer/transfer.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
+import { CheckingAccountComponent } from './checking-account/checking-account.component';
 
 
 
@@ -38,7 +39,8 @@ import { CustomerInfoComponent } from './customer-info/customer-info.component';
     ToolbarComponent,
     SavingsAccountComponent,
     TransferComponent,
-    CustomerInfoComponent
+    CustomerInfoComponent,
+    CheckingAccountComponent
   ],
     imports: [
         BrowserModule,
