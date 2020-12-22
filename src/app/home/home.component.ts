@@ -46,8 +46,9 @@ export class HomeComponent implements OnInit {
     // TODO: cannot be null (username and password)
     this.dialog.closeAll();
     this.authService.login(customer);
-
   }
+
+
 
   register(customer: Customer, rePassword: string): void{
     if (customer.password !== null && customer.password === rePassword) {
