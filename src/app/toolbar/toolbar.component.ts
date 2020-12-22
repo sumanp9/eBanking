@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Customer} from '../home/home.component';
 import {Router} from '@angular/router';
 import {AccountDetails} from '../account/account.component';
 import {EBankingService} from '../service/e-banking.service';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -16,7 +16,8 @@ export class ToolbarComponent implements OnInit {
 
 
   constructor(private router: Router,
-              private service: EBankingService) {
+              private service: EBankingService,
+              private authService: AuthService) {
 
   }
 
@@ -28,8 +29,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   logout(): void {
-    this.router.navigateByUrl('');
-
+    this.authService.logout();
   }
 
   refreshPage(): void {
