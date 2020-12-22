@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {InternalService} from '../service/internal.service';
 import {Router} from '@angular/router';
 import {EBankingService} from '../service/e-banking.service';
 import {Customer} from '../home/home.component';
@@ -20,17 +19,15 @@ export interface AccountDetails {
 })
 export class AccountComponent implements OnInit {
 
-  customer: Customer;
+  customer = localStorage.getItem('User');
   changeText: boolean;
   checkingText: boolean;
   customerAccountDetails: AccountDetails;
 
 
   constructor(private dialog: MatDialog,
-              private internalService: InternalService,
               private router: Router,
               private service: EBankingService) {
-    this.customer = this.internalService.serviceData;
   }
 
   ngOnInit(): void {
@@ -45,7 +42,7 @@ export class AccountComponent implements OnInit {
 
 
   private refreshPage(): void {
-    this.service.getAccountDetails(this.customer.userName).subscribe((details: AccountDetails) => {
+    this.service.getAccountDetails(this.customer).subscribe((details: AccountDetails) => {
       this.customerAccountDetails = details;
     });
   }

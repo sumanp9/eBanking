@@ -1,9 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {AccountType, Checking, EBankingService, ToAccount, TransferDetails} from '../service/e-banking.service';
-import {InternalService} from '../service/internal.service';
 import {MatDialog} from '@angular/material/dialog';
-import {Customer} from '../home/home.component';
 import {CustomerInfoComponent} from '../customer-info/customer-info.component';
 import {TransferComponent} from '../transfer/transfer.component';
 
@@ -14,29 +12,27 @@ import {TransferComponent} from '../transfer/transfer.component';
 })
 export class CheckingAccountComponent implements OnInit {
 
-  customer: Customer;
+  customerId = Number(localStorage.getItem('userId'));
   checkingAccount: Checking;
-  userName: string;
+  userName = localStorage.getItem('User');
   amounts: number[] = [10, 50, 100, 500];
   depositAmount: number;
   toAccount: ToAccount;
+  customer = localStorage.getItem('User');
 
   constructor(private router: Router,
               private service: EBankingService,
-              private internalService: InternalService,
               private dialog: MatDialog) {
-    this.customer = this.internalService.serviceData;
-    this.userName =  this.customer.userName;
   }
 
   ngOnInit(): void {
-    (this.customer === null || this.customer === undefined) ?
+    (this.customerId === null || this.customerId === undefined) ?
       this.router.navigateByUrl('') :
       this.refreshPage();
   }
 
   private refreshPage(): void{
-    this.service.getCheckingInfo(this.customer.id).subscribe((checking => {
+    this.service.getCheckingInfo(this.customerId).subscribe((checking => {
       this.checkingAccount = checking;
     }));
   }
@@ -79,7 +75,7 @@ export class CheckingAccountComponent implements OnInit {
   }
 
   withdrawChecking(): void {
-    this.service.withdraw(this.depositAmount, this.checkingAccount.id).subscribe(result =>{
+    this.service.withdraw(this.depositAmount, this.checkingAccount.id).subscribe(result => {
       if (result) {
         this.dialog.closeAll();
         this.refreshPage();

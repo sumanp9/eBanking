@@ -1,7 +1,6 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {AccountType, EBankingService, Savings, ToAccount, TransferDetails} from '../service/e-banking.service';
 import {Router} from '@angular/router';
-import {InternalService} from '../service/internal.service';
 import {MatDialog} from '@angular/material/dialog';
 import {TransferComponent} from '../transfer/transfer.component';
 import {CustomerInfoComponent} from '../customer-info/customer-info.component';
@@ -13,7 +12,7 @@ import {CustomerInfoComponent} from '../customer-info/customer-info.component';
 })
 export class SavingsAccountComponent implements OnInit {
 
-  userName: string;
+  userName = localStorage.getItem('User');
   savingsAccount: Savings;
   depositAmount: number;
   amounts: number[] = [10, 50, 100, 500];
@@ -22,14 +21,12 @@ export class SavingsAccountComponent implements OnInit {
 
   constructor(private service: EBankingService,
               private router: Router,
-              private internalService: InternalService,
               private dialog: MatDialog) {
-    this.userName =  this.internalService.serviceData.userName;
   }
 
   ngOnInit(): void {
 
-    if (this.internalService.serviceData === null) {
+    if (this.userName === null) {
       this.router.navigateByUrl('');
     } else {
       this.refreshPage();

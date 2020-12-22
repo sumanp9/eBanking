@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {EBankingService, ToAccount, TransferAmount, TransferDetails} from '../service/e-banking.service';
-import {InternalService} from '../service/internal.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
@@ -14,16 +13,13 @@ export class TransferComponent implements OnInit {
   otherAcctNumber: number;
   amount: number;
   selected: string;
-  userName: string;
   toAccount: ToAccount;
 
   transferDetails: TransferDetails;
 
   constructor(@Inject(MAT_DIALOG_DATA) toAccount: ToAccount,
-              private internalService: InternalService,
               private service: EBankingService,
               private dialogRef: MatDialogRef<TransferComponent>) {
-    this.userName =  internalService.serviceData.userName;
     this.toAccount = toAccount;
     this.selected = '';
 

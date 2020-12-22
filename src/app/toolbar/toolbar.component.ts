@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Customer} from '../home/home.component';
 import {Router} from '@angular/router';
 import {AccountDetails} from '../account/account.component';
-import {InternalService} from '../service/internal.service';
 import {EBankingService} from '../service/e-banking.service';
 
 @Component({
@@ -12,14 +11,12 @@ import {EBankingService} from '../service/e-banking.service';
 })
 export class ToolbarComponent implements OnInit {
 
-  customer: Customer;
+  customer = localStorage.getItem('User');
   customerAccountDetails: AccountDetails;
 
 
   constructor(private router: Router,
-              private service: EBankingService,
-              private internalService: InternalService) {
-    this.customer = this.internalService.serviceData;
+              private service: EBankingService) {
 
   }
 
@@ -36,7 +33,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   refreshPage(): void {
-    this.service.getAccountDetails(this.customer.userName).subscribe((details: AccountDetails) => {
+    this.service.getAccountDetails(this.customer).subscribe((details: AccountDetails) => {
         console.log(details);
         this.customerAccountDetails = details;
       });

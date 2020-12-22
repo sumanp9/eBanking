@@ -2,7 +2,7 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {EBankingService} from '../service/e-banking.service';
 import {Router} from '@angular/router';
-import {InternalService} from '../service/internal.service';
+import {AuthService} from '../auth.service';
 
 
 export interface Customer {
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private service: EBankingService,
-              private internalService: InternalService,
+              private authService: AuthService,
               private router: Router) {
   }
 
@@ -44,24 +44,15 @@ export class HomeComponent implements OnInit {
 
   signIn(customer: Customer): void {
     // TODO: cannot be null (username and password)
-    this.service.loginUser(customer).subscribe((cust) => {
-      if (cust) {
-        this.internalService.serviceData = cust;
-        this.dialog.closeAll();
-        this.router.navigateByUrl('/account');
-      }
-      //else statement to display error UI
-    });
+    this.dialog.closeAll();
+    this.authService.login(customer);
 
   }
 
   register(customer: Customer, rePassword: string): void{
-    console.log(customer);
-    console.log(rePassword);
     if (customer.password !== null && customer.password === rePassword) {
       this.service.registerUser(customer).subscribe((cust) => {
         if (cust != null) {
-          this.internalService.serviceData = cust;
           this.router.navigateByUrl('/account');
         }
       }, error => {
