@@ -21,12 +21,14 @@ export class AuthService {
      if (cust) {
        localStorage.setItem('isLoggedIn', 'true');
        localStorage.setItem('token', 'hello');
+       localStorage.setItem('User', cust.userName);
+       this.getUserId(localStorage.getItem('User')).subscribe((userId: number) => {
+         localStorage.setItem('userId', String(userId));
+       });
        this.loggedIn.next(true);
        this.router.navigateByUrl('/account');
      }
-     this.getUserId(localStorage.getItem('User')).subscribe((userId: number) => {
-       localStorage.setItem('userId', String(userId));
-     });
+
      // else statement to display error UI
    });
 
@@ -36,6 +38,7 @@ export class AuthService {
  logout(): void {
    localStorage.setItem('isLoggedIn', 'false');
    localStorage.setItem('User', '');
+   localStorage.clear();
    this.loggedIn.next(false);
    this.router.navigateByUrl('');
  }
