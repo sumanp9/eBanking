@@ -16,20 +16,17 @@ export class AuthService {
 
   private loggedIn =  new BehaviorSubject<boolean>(localStorage.getItem('isLoggedIn') === 'true');
 
-/*
-  isLoggedIn(): Observable<boolean> {
-    return this.isLoginSubject.asObservable();
- }
-*/
  login(customer: Customer): void {
    this.loginUser(customer).subscribe((cust) => {
      if (cust) {
-       // this.internalService.serviceData = cust;
        localStorage.setItem('isLoggedIn', 'true');
        localStorage.setItem('token', 'hello');
        this.loggedIn.next(true);
        this.router.navigateByUrl('/account');
      }
+     this.getUserId(localStorage.getItem('User')).subscribe((userId: number) => {
+       localStorage.setItem('userId', String(userId));
+     });
      // else statement to display error UI
    });
 
@@ -38,16 +35,17 @@ export class AuthService {
 
  logout(): void {
    localStorage.setItem('isLoggedIn', 'false');
+   localStorage.setItem('User', '');
    this.loggedIn.next(false);
    this.router.navigateByUrl('');
  }
-  /*
-    private hasToken(): boolean {
-      return !!localStorage.getItem('token');
-    }
-  */
+
   private loginUser(customer: Customer): Observable<Customer>{
     return this.http.post<Customer>(this.url + 'login', customer);
+  }
+
+  private getUserId(userName: string): Observable<number> {
+    return this.http.post<number>(this.url + 'getUserId', userName);
   }
 
 }
