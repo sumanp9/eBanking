@@ -47,10 +47,6 @@ export class EBankingService {
     return this.http.post<Customer>(this.url + 'registerCustomer', customer);
   }
 
-  loginUser(customer: Customer): Observable<Customer>{
-    return this.http.post<Customer>(this.url + 'login', customer);
-  }
-
   getAccountDetails(userName: string): Observable<AccountDetails> {
     return this.http.post<AccountDetails>(this.url + 'getAccountDetails', userName);
   }
