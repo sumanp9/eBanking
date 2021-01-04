@@ -40,19 +40,8 @@ export class TransferComponent implements OnInit {
 
   transferAmount(): void {
     if (this.amount > 0 && this.amount <= this.toAccount.balance) {
-      this.transferDetails = {accountType: this.selected, amount: this.amount, otherAccountNum: this.otherAcctNumber};
-      this.dialogRef.close(this.transferDetails);
-     /* if (this.selected === 'Another Ebanking Account') {
-        this.service.transferMoneytoAnotherAccount(this.selected, this.amount, this.otherAcctNumber, this.userName).subscribe((result) => {
-          this.dialogRef.close();
-        });
-      }
-      else{
-        console.log('Here');
-        this.service.transferMoney(this.selected, this.amount, this.userName).subscribe((result) => {
-          this.dialogRef.close();
-        });
-      }*/
+        this.transferDetails = {accountType: this.selected, amount: this.amount, otherAccountNum: this.otherAcctNumber};
+        this.dialogRef.close(this.transferDetails);
     }
   }
 }
