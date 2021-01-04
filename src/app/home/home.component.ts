@@ -54,6 +54,8 @@ export class HomeComponent implements OnInit {
     if (customer.password !== null && customer.password === rePassword) {
       this.service.registerUser(customer).subscribe((cust) => {
         if (cust != null) {
+          this.dialog.closeAll();
+          this.authService.login(customer);
           this.router.navigateByUrl('/account');
         }
       }, error => {
