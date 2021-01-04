@@ -84,7 +84,7 @@ export class CheckingAccountComponent implements OnInit {
   }
 
   private transferToAnotherAccount(transferDetails: TransferDetails): void {
-    this.service.transferMoneytoAnotherAccount(transferDetails.accountType,
+    this.service.transferMoneytoAnotherAccount(transferDetails.accountType = 'Checking',
       transferDetails.amount, transferDetails.otherAccountNum, this.userName).subscribe(() => {
         this.refreshPage();
     });
