@@ -36,11 +36,16 @@ export class AuthService {
 
 
  logout(): void {
+   this.clearLocalStorage();
+   this.router.navigateByUrl('');
+ }
+
+ clearLocalStorage(): void {
    localStorage.setItem('isLoggedIn', 'false');
    localStorage.setItem('User', '');
    localStorage.clear();
    this.loggedIn.next(false);
-   this.router.navigateByUrl('');
+
  }
 
   private loginUser(customer: Customer): Observable<Customer>{
