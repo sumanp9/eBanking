@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {EBankingService} from '../service/e-banking.service';
-import {Customer} from '../home/home.component';
 
 export interface AccountDetails {
   savingsId: number;
