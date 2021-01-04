@@ -40,7 +40,7 @@ export class TransferComponent implements OnInit {
 
   transferAmount(): void {
     if (this.amount > 0 && this.amount <= this.toAccount.balance) {
-        this.transferDetails = {accountType: this.selected, amount: this.amount, otherAccountNum: this.otherAcctNumber};
+        this.transferDetails = {accountType: (this.selected === 'Savings Account' ? 'Checking' : 'Savings') , amount: this.amount, otherAccountNum: this.otherAcctNumber};
         this.dialogRef.close(this.transferDetails);
     }
   }
