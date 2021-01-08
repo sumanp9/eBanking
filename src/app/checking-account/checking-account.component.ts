@@ -4,6 +4,7 @@ import {AccountType, Checking, EBankingService, ToAccount, TransferDetails} from
 import {MatDialog} from '@angular/material/dialog';
 import {CustomerInfoComponent} from '../customer-info/customer-info.component';
 import {TransferComponent} from '../transfer/transfer.component';
+import {TransactionHistoryComponent} from '../transaction-history/transaction-history.component';
 
 @Component({
   selector: 'app-checking-account',
@@ -94,5 +95,10 @@ export class CheckingAccountComponent implements OnInit {
     this.service.transferMoney(result.accountType, result.amount, this.userName).subscribe(() => {
       this.refreshPage();
     });
+  }
+
+  transactionHistory(): void {
+    this.service.transferringAcctType('CHECKING');
+    this.dialog.open(TransactionHistoryComponent, {data: this.checkingAccount.id, width: '500px'});
   }
 }
