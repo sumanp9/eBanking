@@ -29,6 +29,13 @@ export interface TransferDetails{
   otherAccountNum: number;
 }
 
+export interface TransactionHistory{
+  date: Date;
+  fromAccount: string;
+  toAccount: string;
+  amount: number
+}
+
 export enum AccountType{
   Savings,
   Checking
@@ -84,4 +91,7 @@ export class EBankingService {
   }
 
 
+  getTransactionHistory(accountType: string, id: number): Observable<Array<TransactionHistory>> {
+    return this.http.post<Array<TransactionHistory>>(this.url + 'getTransactionHistory/'+ accountType, id);
+  }
 }
