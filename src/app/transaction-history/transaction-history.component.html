@@ -1,0 +1,36 @@
+<mat-card-header><b>Transaction History</b>: Savings</mat-card-header>
+
+<div *ngIf="transactionsHistory">
+  <table mat-table [dataSource]="transactionsHistory" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.date}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="FromAccount">
+      <th mat-header-cell *matHeaderCellDef> From Account </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.fromAccount}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="ToAccount">
+      <th mat-header-cell *matHeaderCellDef> To Account </th>
+      <td mat-cell *matCellDef="let transaction"> {{transaction.toAccount}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let transaction"> ${{transaction.amount}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
