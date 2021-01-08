@@ -28,6 +28,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {TransferComponent} from './transfer/transfer.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
 import { CheckingAccountComponent } from './checking-account/checking-account.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 
 
@@ -40,7 +41,8 @@ import { CheckingAccountComponent } from './checking-account/checking-account.co
     SavingsAccountComponent,
     TransferComponent,
     CustomerInfoComponent,
-    CheckingAccountComponent
+    CheckingAccountComponent,
+    TransactionHistoryComponent
   ],
     imports: [
         BrowserModule,

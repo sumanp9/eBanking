@@ -1,9 +1,10 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {AccountType, EBankingService, Savings, ToAccount, TransferDetails} from '../service/e-banking.service';
+import {AccountType, EBankingService, Savings, ToAccount, TransactionHistory, TransferDetails} from '../service/e-banking.service';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {TransferComponent} from '../transfer/transfer.component';
 import {CustomerInfoComponent} from '../customer-info/customer-info.component';
+import {TransactionHistoryComponent} from '../transaction-history/transaction-history.component';
 
 @Component({
   selector: 'app-savings-account',
@@ -87,5 +88,10 @@ export class SavingsAccountComponent implements OnInit {
 
   customerInformation(): void {
     this.dialog.open(CustomerInfoComponent, {data: this.userName});
+  }
+
+  transactionHistory(): void {
+    this.dialog.open(TransactionHistoryComponent, {data: this.savingsAccount.id}).afterClosed().subscribe();
+
   }
 }
