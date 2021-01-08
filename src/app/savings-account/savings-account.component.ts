@@ -91,6 +91,7 @@ export class SavingsAccountComponent implements OnInit {
   }
 
   transactionHistory(): void {
+    this.service.transferringAcctType('SAVINGS');
     this.dialog.open(TransactionHistoryComponent, {data: this.savingsAccount.id, width: '500px'}).afterClosed().subscribe();
 
   }

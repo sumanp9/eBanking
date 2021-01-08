@@ -2,18 +2,6 @@
 <p></p>
 <div class="flexbox" *ngIf="this.customer">
 
-  <div class="flexOptions">
-    <mat-card>
-      <mat-selection-list [multiple]="false">
-        <mat-list-option (click)="getAccountDetails(acctDetails)">Account Details</mat-list-option>
-        <mat-list-option (click)="openDialog(deposit)">Deposit</mat-list-option>
-        <mat-list-option (click)="openDialog(withdraw)">Withdraw</mat-list-option>
-        <mat-list-option (click)="transfer()">Transfer Money</mat-list-option>
-        <mat-list-option>Transaction History</mat-list-option>
-      </mat-selection-list>
-    </mat-card>
-  </div>
-
   <div class="flex-buttons" *ngIf="this.checkingAccount">
     <mat-card>
       <mat-card-header><em> <b> Checking </b></em>Account Details</mat-card-header>
@@ -25,7 +13,7 @@
         <button mat-flat-button class="option-button" (click)="openDialog(deposit)">Deposit</button>
         <button mat-flat-button class="option-button" (click)="openDialog(withdraw)">Withdraw</button>
         <button mat-flat-button class="option-button" (click)="transfer()">Transfer Money</button>
-        <button mat-flat-button class="option-button">Transaction History</button>
+        <button mat-flat-button class="option-button" (click)="transactionHistory()">Transaction History</button>
         <button mat-flat-button class="option-button" (click)="customerInformation()">My Information</button>
       </mat-dialog-actions>
     </mat-card>
