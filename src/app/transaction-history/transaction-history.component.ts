@@ -10,13 +10,14 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class TransactionHistoryComponent implements OnInit {
 
   accountTypeId: number;
+  accountType: string;
   transactionsHistory: Array<TransactionHistory>;
   displayedColumns: string[];
 
   constructor(@Inject(MAT_DIALOG_DATA) accountTypeId: number,
               private service: EBankingService) {
     this.accountTypeId = accountTypeId;
-    this.displayedColumns = ['Date', 'ToAccount', 'FromAccount', 'Amount'];
+    this.displayedColumns = ['Date', 'FromAccount', 'direction', 'ToAccount' , 'Amount'];
   }
 
   ngOnInit(): void {
@@ -24,7 +25,8 @@ export class TransactionHistoryComponent implements OnInit {
   }
 
   private refreshPage(): void {
-    this.service.getTransactionHistory('SAVINGS', this.accountTypeId).subscribe((transactions: TransactionHistory[]) => {
+    this.accountType = this.service.getTransferringAcct();
+    this.service.getTransactionHistory(this.accountType, this.accountTypeId).subscribe((transactions: TransactionHistory[]) => {
       this.transactionsHistory = transactions;
     });
   }
