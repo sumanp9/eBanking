@@ -33,7 +33,7 @@ export interface TransactionHistory{
   date: Date;
   fromAccount: string;
   toAccount: string;
-  amount: number
+  amount: number;
 }
 
 export enum AccountType{
@@ -47,6 +47,8 @@ export enum AccountType{
 })
 export class EBankingService {
   private url = 'http://localhost:8080/';
+
+  transferringAcct: string;
 
   constructor(private http: HttpClient) { }
 
@@ -93,5 +95,13 @@ export class EBankingService {
 
   getTransactionHistory(accountType: string, id: number): Observable<Array<TransactionHistory>> {
     return this.http.post<Array<TransactionHistory>>(this.url + 'getTransactionHistory/'+ accountType, id);
+  }
+
+  transferringAcctType(accountType: string): void {
+    this.transferringAcct  = accountType;
+  }
+
+  getTransferringAcct(): string{
+    return this.transferringAcct;
   }
 }
