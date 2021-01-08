@@ -29,6 +29,7 @@ import {TransferComponent} from './transfer/transfer.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
 import { CheckingAccountComponent } from './checking-account/checking-account.component';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
+import {EBankingService} from './service/e-banking.service';
 
 
 
@@ -66,7 +67,7 @@ import { TransactionHistoryComponent } from './transaction-history/transaction-h
         MatTableModule,
         MatSelectModule
     ],
-  providers: [],
+  providers: [EBankingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
