@@ -91,7 +91,7 @@ export class SavingsAccountComponent implements OnInit {
   }
 
   transactionHistory(): void {
-    this.dialog.open(TransactionHistoryComponent, {data: this.savingsAccount.id}).afterClosed().subscribe();
+    this.dialog.open(TransactionHistoryComponent, {data: this.savingsAccount.id, width: '500px'}).afterClosed().subscribe();
 
   }
 }
