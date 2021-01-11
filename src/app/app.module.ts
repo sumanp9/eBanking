@@ -65,7 +65,7 @@ import {EBankingService} from './service/e-banking.service';
         MatListModule,
         MatMenuModule,
         MatTableModule,
-        MatSelectModule
+        MatSelectModule,
     ],
   providers: [EBankingService],
   bootstrap: [AppComponent]

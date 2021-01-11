@@ -61,9 +61,8 @@ export class CheckingAccountComponent implements OnInit {
     });
   }
 
-  // TODO: display more information than just username
   customerInformation(): void {
-    this.dialog.open(CustomerInfoComponent, {data: this.userName});
+    this.dialog.open(CustomerInfoComponent, {data: this.userName , width: '300px'});
   }
 
   depositChecking(): void {

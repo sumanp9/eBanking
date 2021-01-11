@@ -1,34 +1,31 @@
 <h1>Customer Information</h1>
-
-<button mat-icon-button><mat-icon>picture_as_pdf</mat-icon></button>
-
 <mat-divider></mat-divider>
 
 <div *ngIf="this.customer">
   <mat-form-field>
     <span>Name: </span>
     {{customer.firstName}}  {{customer.lastName}}
+    <input matInput disabled>
   </mat-form-field>
 
-  <p></p>
 
   <mat-form-field>
     <span>Email: </span>
     {{customer.email}}
+    <input matInput disabled>
   </mat-form-field>
 
-  <p></p>
 
   <mat-form-field>
     <span>Phone: </span>
     {{customer.phoneNumber}}
+    <input matInput disabled>
   </mat-form-field>
-
-  <p></p>
 
   <mat-form-field>
     <span>Address: </span>
     {{customer.address}}
+    <input matInput disabled>
   </mat-form-field>
 
 </div>

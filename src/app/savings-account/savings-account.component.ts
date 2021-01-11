@@ -87,7 +87,7 @@ export class SavingsAccountComponent implements OnInit {
   }
 
   customerInformation(): void {
-    this.dialog.open(CustomerInfoComponent, {data: this.userName});
+    this.dialog.open(CustomerInfoComponent, {data: this.userName, width: '300px'});
   }
 
   transactionHistory(): void {
