@@ -4,7 +4,7 @@
   justify-content: flex-start;
 }
 
-.flexOptions{
+.flexNav{
   width:15%;
   padding: 0 20% 0 0;
 }
@@ -23,4 +23,10 @@
   padding-bottom: 20px;
   transition: 0.7s;
   background-color: antiquewhite;
+}
+
+.button-account:hover{
+  transition: 1s;
+  background-color: blue;
+  color: white;
 }

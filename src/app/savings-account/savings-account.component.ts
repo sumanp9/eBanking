@@ -95,4 +95,8 @@ export class SavingsAccountComponent implements OnInit {
     this.dialog.open(TransactionHistoryComponent, {data: this.savingsAccount.id, width: '500px'}).afterClosed().subscribe();
 
   }
+
+  navToChecking(): void{
+    this.router.navigateByUrl('/checking');
+  }
 }

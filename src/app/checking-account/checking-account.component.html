@@ -7,6 +7,8 @@
       <mat-card-header><em> <b> Checking </b></em>Account Details</mat-card-header>
       <mat-card-content>
         <mat-label>Your current balance is: ${{this.checkingAccount.balance}}</mat-label>
+        <p></p>
+        <button class="button-nav" mat-button (click)="navToSavings()">Savings Account</button>
       </mat-card-content>
       <mat-dialog-actions>
         <button mat-flat-button class="option-button" (click)="getAccountDetails(acctDetails)">Details</button>

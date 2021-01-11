@@ -101,4 +101,8 @@ export class CheckingAccountComponent implements OnInit {
     this.service.transferringAcctType('CHECKING');
     this.dialog.open(TransactionHistoryComponent, {data: this.checkingAccount.id, width: '500px'});
   }
+
+  navToSavings(): void {
+    this.router.navigateByUrl('/savings');
+  }
 }

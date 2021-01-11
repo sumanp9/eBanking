@@ -2,13 +2,15 @@
 <p></p>
 <div class="flexbox" *ngIf="this.userName">
 
-
 <div class="flex-buttons" *ngIf="this.savingsAccount">
   <mat-card>
     <mat-card-header><em> <b> Savings </b></em>Account Details</mat-card-header>
     <mat-card-content>
       <mat-label>Your current balance is: ${{this.savingsAccount.balance}}</mat-label>
+      <p></p>
+      <button class="button-account" mat-button (click)="navToChecking()">Checking Account</button>
     </mat-card-content>
+
     <mat-dialog-actions>
       <button mat-flat-button class="option-button" (click)="getAccountDetails(acctDetails)">Details</button>
       <button mat-flat-button class="option-button" (click)="openDialog(deposit)">Deposit</button>
